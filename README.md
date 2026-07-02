@@ -2,6 +2,8 @@
 
 A machine learning platform for credit risk modeling and credit decisioning. This project demonstrates the complete lifecycle of a modern credit decision system-from data ingestion and feature engineering to model deployment, explainability, monitoring and policy-driven decision making. The repository is designed as a production system rather than a notebook-based machine learning project. 
 
+![Python](https://img.shields.io/badge/Python-3.11+-blue)
+
 # Overview
 
 # Motivation 
