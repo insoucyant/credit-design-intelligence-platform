@@ -1,3 +1,7 @@
+# Why this file exists?
+# .dockerignore is used to tell Docker which files and directories to ignore when building an image.
+#  This helps reduce the size of the image and speeds up the build process by excluding unnecessary files.
+
 #############################################################
 # Git
 #############################################################
