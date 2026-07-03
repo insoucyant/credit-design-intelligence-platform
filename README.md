@@ -149,6 +149,23 @@ credit-decision-intelligence-platform/
 
 # Technology Stack 
 
+| Area | Technology |
+|------|------------|
+| Language | Python 3.11+ |
+| Data Processing | Pandas, Numpy |
+| Machine Learning | Scikit-learn, LightGBM, XGBoost |
+| Explainability | SHAP |
+| Data Validation | Pandera |
+| API | FastAPI |
+| Experiment Tracking | MLflow |
+| Configuration | Pydantic Settings |
+| Containerization | Docker |
+| Testing | Pytest |
+| Linting | Ruff |
+| Formatting | Black |
+| Type Checking | MyPy |
+| CI/CD | Github Actions | 
+
 ---
 
 # Development Roadmap
@@ -210,7 +227,7 @@ Planned future extensions include:
 
 # Current Status
 
-🚧 **Acrive Development**
+🚧 **Active Development**
 
 The repository is being developed incrementally with a focus on production-quality engineering, maintainability, and reproducibility. 
 
