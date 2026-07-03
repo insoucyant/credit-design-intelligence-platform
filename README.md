@@ -127,6 +127,24 @@ The platform will support:
 ---
 # Repository Structure
 
+```text
+credit-decision-intelligence-platform/
+|-- configs/            # Configuration Files
+|-- data/               # Raw, Interim and Processed datasets
+|-- docs/               # Architecture and Design Documents
+|-- models/             # Saved Model Artifacts
+|-- notebooks/          # Exploratory Analysis
+|-- reports/            # Evaluation and Monitoring Reports
+|-- scripts/            # Command-line entry points
+|-- src/                # Production Source Code
+|-- tests/              # Unit and Integration Tests
+|-- Dockerfile
+|-- docker-compose.yml
+|-- Makefile
+|-- pyproject.toml
+|-- README.md
+```
+
 ---
 
 # Technology Stack 
@@ -200,7 +218,8 @@ The repository is being developed incrementally with a focus on production-quali
 
 # Contributing
 
-This repository is currently a personal learning and portfolio project. Contributions and suggestions are welcome. 
+This repository is currently a personal learning and portfolio project. Contributions and suggestions are welcome.
+ 
 ---
 
 # License
