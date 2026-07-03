@@ -49,11 +49,76 @@ A production system requires:
 
 This repository demonstrates how these components fit together to form a complete machine learning platform.
 
-# Project Goals
+# Objectives
 
+The project aims to demonstrate end-to-end ownership of the machine learning lifecycle expected from Senior Data Scientist/Lead Data Scientist and Machine Learning Engineers working in credit risk and fintech.
+
+The platform will support:
+
+- Production-grade project structure
+- Modular pipeline design
+- Credit risk model development
+- Probability calibration
+- Explainable AI
+- Rule-based decision engine
+- Batch and online scoring
+- Model monitoring 
+- Drift detection
+- MLflow experminet tracking
+- Dockerized deployment
+- Automated testing
+- Continuous integration 
+
+---
 
 # High-Level Architecture
 
+```text 
+
+                    +----------------------+
+                    |    Raw Credit Data   |
+                    +----------------------+
+                                |
+                                v
+                    +----------------------+
+                    |   Data Validation    |
+                    +----------------------+
+                                |
+                                v
+                    +----------------------+
+                    |   Feature Pipeline   |
+                    +----------------------+
+                                |
+                                v
+                    +----------------------+
+                    |   Model Training     |
+                    +----------------------+
+                                |
+                                v
+                    +----------------------+
+                    |   Calibration        |
+                    +----------------------+
+                                |
+                                v
+                    +----------------------+
+                    |   Decision Engine    |
+                    +----------------------+
+                                |
+                                v
+                +-------------------------------+
+                |                               |
+                v                               v
+        Batch Scoring                      FastAPI Service
+                |                               |
+                +-------------------------------+
+                                |
+                                v
+                    +----------------------+
+                    |      Monitoring      |
+                    +----------------------+
+```
+
+---
 # Repository Structure
 
 
