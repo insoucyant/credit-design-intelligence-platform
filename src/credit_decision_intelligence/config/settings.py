@@ -45,6 +45,12 @@
 from pathlib import Path
 from pydantic import BaseModel, Field
 
+from functools import lru_cache
+from typing import Any
+
+import yaml
+
+
 class ProjectConfig(BaseModel):
     """ Project Configuration Schema. Project Level Metadata."""
     
@@ -102,3 +108,28 @@ class Settings(BaseModel):
     api: APIConfig
     mlflow: MLflowConfig
     monitoring: MonitoringConfig
+    
+    
+    
+def load_yaml_config(config_path: Path) -> dict[str, Any]:
+    """Load and parse a YAML configuration file. """
+    
+    if not config_path.exists():
+        raise FileNotFoundError(f"Configuration file not found: {config_path}")
+    
+    with open(config_path, "r", encoding="utf-8") as file:
+        config_data = yaml.safe_load(file)
+        
+    if not isinstance(config_data, dict):
+        raise ValueError(f"Configuration file must contain a dictionary at the root level/ a YAML mapping: {config_path} ")
+    
+    return config_data
+
+
+@lru_cache
+def get_settings(config_path: str = "configs/config.yaml") -> Settings:
+    """ Load, validate and return the application settings as a singleton."""
+    
+    raw_config = load_yaml_config(Path(config_path))
+    return Settings.model_validate(raw_config)
+

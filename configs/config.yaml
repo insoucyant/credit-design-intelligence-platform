@@ -16,7 +16,7 @@ logging:
   level: INFO
   format: json
 
-mode:
+model:
   random_seed: 42
 
 api: 
