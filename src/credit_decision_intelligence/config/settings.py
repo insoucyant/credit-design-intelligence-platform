@@ -48,7 +48,7 @@ from pydantic import BaseModel, Field
 from functools import lru_cache
 from typing import Any
 
-import yaml
+import yaml # What does yaml_safeload do? It is a function provided by the PyYAML library that safely loads YAML data from a string or file. It parses the YAML content and converts it into Python objects, such as dictionaries, lists, and strings. The "safe" aspect of yaml.safe_load means that it only allows a subset of YAML features that are considered safe to use, preventing the execution of arbitrary code or potentially harmful constructs that could be present in untrusted YAML input.
 
 
 class ProjectConfig(BaseModel):
@@ -125,7 +125,8 @@ def load_yaml_config(config_path: Path) -> dict[str, Any]:
     
     return config_data
 
-
+# Why use @lru_cache?
+# The @lru_cache decorator is used to cache the results of the get_settings function based on its input arguments. This means that if the function is called multiple times with the same config_path, it will return the cached result instead of reloading and parsing the configuration file again. This improves performance by avoiding redundant computations and ensures that the application uses a consistent set of configuration values throughout its lifecycle.
 @lru_cache
 def get_settings(config_path: str = "configs/config.yaml") -> Settings:
     """ Load, validate and return the application settings as a singleton."""
