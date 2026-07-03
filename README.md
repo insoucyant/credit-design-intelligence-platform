@@ -172,40 +172,88 @@ credit-decision-intelligence-platform/
 
 ## Phase 1 - Repository Foundation
 
-
-
----
-
-## Phase 2
-
----
-
-## Phase 3
-
+- [x] Repository Structure
+- [x] Python Packaging
+- [x] Git Configuration
+- [x] Docker Configuration
+- [ ] Configuration Management 
+- [ ] Logging 
+- [ ] CI/CD
 
 ---
 
-## Phase 4
+## Phase 2 - Data Pipeline
+
+- [ ] Dataset Ingestion
+- [ ] Data Validation
+- [ ] Train/Validation/Test Split
+- [ ] Exploratory Analysis
 
 ---
 
-## Phase 5
+## Phase 3 - Feature Engineering
 
-
----
-
-## Phase 6
-
----
-
-## Phase 7
+- [ ] Missing Value Handling
+- [ ] Encoding
+- [ ] Feature Generation
+- [ ] Feature Pipeline
 
 ---
 
-## Phase 8
+## Phase 4 - Model Development
+
+- [ ] Logistic Regression Baseline
+- [ ] LightGBM
+- [ ] XGBoost
+- [ ] Hyperparameter Tuning
+- [ ] Model Evaluation
 
 ---
 
+## Phase 5 - Probability Calibration
+
+- [ ] Platt Scaling
+- [ ] Isotonic Regression
+- [ ] Calibration Evaluation 
+
+---
+
+## Phase 6 - Credit Decision Engine
+
+- [ ] Risk Bands
+- [ ] Credit Policy
+- [ ] Approval Rules
+- [ ]  Credit Limit Assignment 
+
+---
+
+## Phase 7 - Explainability
+
+- [ ] Global SHAP
+- [ ] Local SHAP
+- [ ] Reason Codes
+- [ ] Feature Importance
+
+---
+
+## Phase 8 - Deployment 
+
+- [ ] FastAPI Service
+- [ ] Batch Scoring 
+- [ ] Docker Deployment 
+- [ ] REST API
+
+---
+
+## Phase 9 - Monitoring 
+
+- [ ] Data Drift
+- [ ] Prediction Drift 
+- [ ] Model Performance 
+- [ ] Calibration Drift
+- [ ] Monitoring Reports 
+
+---
 # Future Enhancements
 
 Planned future extensions include:
