@@ -6,6 +6,8 @@ A machine learning platform for credit risk modeling and credit decisioning. Thi
 ![Status](https://img.shields.io/badge/Status-Under%20Development-orange)
 ![License](http://img.shields.io/badge/License-MIT-green)
 
+---
+
 # Overview
 
 The **Credit Decision Intelligence Platform** is an end-to-end machine learning system that demonstrates how modern fintech companies build, deploy, and monitor credit decision model in production.
@@ -26,6 +28,8 @@ This repository covers the complete lifecycle of a production credit decision pl
 - Docker Deployment
 
 The project is being built incrementally with an emphasis on software engineerin gbest practices, reproductability, and production readiness.
+
+---
 
 # Motivation 
 
@@ -48,6 +52,8 @@ A production system requires:
 - CI/CD
 
 This repository demonstrates how these components fit together to form a complete machine learning platform.
+
+---
 
 # Objectives
 
@@ -121,27 +127,82 @@ The platform will support:
 ---
 # Repository Structure
 
+---
 
 # Technology Stack 
 
+---
 
 # Development Roadmap
 
-## Phase 1
+## Phase 1 - Repository Foundation
+
+
+
+---
 
 ## Phase 2
 
+---
+
 ## Phase 3
+
+
+---
 
 ## Phase 4
 
+---
+
 ## Phase 5
+
+
+---
 
 ## Phase 6
 
+---
+
 ## Phase 7
+
+---
 
 ## Phase 8
 
+---
 
 # Future Enhancements
+
+Planned future extensions include:
+
+- Reject inference
+- Fraud detection signals
+- Alternative credit data
+- Graph-based risk features
+- Customer lifetime value
+- Contextual bandits for credit limit optimization
+- Champion-challenger model deployment
+- Fariness monitoring
+- Macroeconomic scenario analysis
+- LLM-assisted credit policy review
+- Human-in-the-loop decisions workflow
+
+
+---
+
+# Current Status
+
+🚧 **Acrive Development**
+
+The repository is being developed incrementally with a focus on production-quality engineering, maintainability, and reproducibility. 
+
+---
+
+# Contributing
+
+This repository is currently a personal learning and portfolio project. Contributions and suggestions are welcome. 
+---
+
+# License
+
+This project is licensed under the MIT License.
