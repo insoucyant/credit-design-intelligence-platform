@@ -36,103 +36,38 @@
 # 5. Write unit tests to verify configuration loading and validation
 
 """
-    Application Configuration Schema.
+    Application Setting provider.
     
-    This module defines the typed configuration objects used across the
+    This module creates and exposes the validated application settings object used across the
     Credit Decision Intelligence Platform.
 """
 
-from pathlib import Path
-from pydantic import BaseModel, Field
-
 from functools import lru_cache
-from typing import Any
+from pathlib import Path
 
-import yaml # What does yaml_safeload do? It is a function provided by the PyYAML library that safely loads YAML data from a string or file. It parses the YAML content and converts it into Python objects, such as dictionaries, lists, and strings. The "safe" aspect of yaml.safe_load means that it only allows a subset of YAML features that are considered safe to use, preventing the execution of arbitrary code or potentially harmful constructs that could be present in untrusted YAML input.
+from credit_decision_intelligence.config.reader import load_yaml_config
+from credit_decision_intelligence.config.schema import Settings
 
-
-class ProjectConfig(BaseModel):
-    """ Project Configuration Schema. Project Level Metadata."""
-    
-    name: str
-    version: str
-    environment: str = Field(default="development", description="The current environment of the application (e.g., development, production).")
-    
-class PathsConfig(BaseModel):
-    """ Paths Configuration Schema. Defines important paths used in the application."""
-    
-    data: Path
-    raw_data: Path
-    interim_data: Path
-    processed_data: Path
-    models: Path
-    reports: Path
-    logs: Path
-    
-class LoggingConfig(BaseModel):
-    """ Logging Configuration Schema. Defines Logging settings for the application."""
-    level: str = Field(default="INFO", description="The logging level (e.g., DEBUG, INFO, WARNING, ERROR).")
-    format: str = "json"  # Default logging format
-    
-class ModelConfig(BaseModel):
-    """ Model Configuration Schema. Defines settings related to machine learning models."""
-    
-    random_seed: int = Field(default=42, ge=0, description="Random seed for reproducibility.")
-    
-    
-class APIConfig(BaseModel):
-    """ API Configuration Schema. Defines settings related to the API."""
-    
-    host: str = Field(default="0.0.0.0", description="The host address of the API server.")
-    port: int = Field(default=8000, description="The port number on which the API server will listen.")
-    
-class MLflowConfig(BaseModel):
-    """ MLflow Configuration Schema. Defines settings related to MLflow tracking and experiments."""
-    
-    tracking_uri: str = Field(default="http://localhost:5000", description="The URI of the MLflow tracking server.")
-    experiment_name: str = Field(default="default", description="The name of the MLflow experiment to use.")
-    
-class MonitoringConfig(BaseModel):
-    """ Monitoring Configuration Schema. Defines settings related to monitoring and alerting."""
-    
-    enabled: bool = Field(default=True, description="Flag to enable or disable monitoring.")
-    
-    
-class Settings(BaseModel):
-    """ Main Settings Schema. Aggregates all configuration schemas into a single object."""
-    
-    project: ProjectConfig
-    paths: PathsConfig
-    logging: LoggingConfig
-    model: ModelConfig
-    api: APIConfig
-    mlflow: MLflowConfig
-    monitoring: MonitoringConfig
-    
-    
-    
-def load_yaml_config(config_path: Path) -> dict[str, Any]:
-    """Load and parse a YAML configuration file. """
-    
-    if not config_path.exists():
-        raise FileNotFoundError(f"Configuration file not found: {config_path}")
-    
-    with open(config_path, "r", encoding="utf-8") as file:
-        config_data = yaml.safe_load(file)
-        
-    if not isinstance(config_data, dict):
-        raise ValueError(f"Configuration file must contain a dictionary at the root level/ a YAML mapping: {config_path} ")
-    
-    return config_data
+DEFAULT_CONFIG_PATH = Path("configs/config.yaml")
 
 # Why use @lru_cache?
 # The @lru_cache decorator is used to cache the results of the get_settings function based on its input arguments. This means that if the function is called multiple times with the same config_path, it will return the cached result instead of reloading and parsing the configuration file again. This improves performance by avoiding redundant computations and ensures that the application uses a consistent set of configuration values throughout its lifecycle.
 @lru_cache
-def get_settings(config_path: str = "configs/config.yaml") -> Settings:
-    """ Load, validate and return the application settings as a singleton."""
-    
-    raw_config = load_yaml_config(Path(config_path))
+def get_settings(
+    config_path: Path = DEFAULT_CONFIG_PATH
+    ) -> Settings:
+    """Load, validate and return the application settings as a singleton."""
+
+    raw_config = load_yaml_config(config_path)
     return Settings.model_validate(raw_config)
 
 
+# Global Application Settings Singleton
+settings = get_settings()
 
+# Current Flow:
+#   settings.py calls reader.py to read config.yaml
+#   settings.py uses schema.py to validate it.
+
+# RUn following in bash to check whether things are fine:
+# python -c "from credit_decision_intelligence.config.settings import settings; print(settings.project.name); print(settings.api.port)"
