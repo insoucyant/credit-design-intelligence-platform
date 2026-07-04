@@ -134,3 +134,5 @@ def get_settings(config_path: str = "configs/config.yaml") -> Settings:
     raw_config = load_yaml_config(Path(config_path))
     return Settings.model_validate(raw_config)
 
+
+
