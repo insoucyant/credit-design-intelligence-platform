@@ -9,6 +9,13 @@ reliability throughout the system.
 
 settings.py will load the configuration from a YAML file and instantiate these
 objects, making them available for use in various components of the platform.
+
+
+One concept --> One class:
+* ForecastingConfig should only contain forecasting settings.
+* EvaluationConfig should only contain evaluation related settings.
+
+Separation-of-Concerns.
 """
 
 
