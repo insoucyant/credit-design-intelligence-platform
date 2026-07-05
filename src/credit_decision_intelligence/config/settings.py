@@ -48,7 +48,10 @@ from pathlib import Path
 from credit_decision_intelligence.config.reader import load_yaml_config
 from credit_decision_intelligence.config.schema import Settings
 
-DEFAULT_CONFIG_PATH = Path("configs/config.yaml")
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+DEFAULT_CONFIG_PATH = PROJECT_ROOT / "configs" / "config.yaml"
+# DEFAULT_CONFIG_PATH = Path("configs/config.yaml")
+
 
 # Why use @lru_cache?
 # The @lru_cache decorator is used to cache the results of the get_settings function based on its input arguments. This means that if the function is called multiple times with the same config_path, it will return the cached result instead of reloading and parsing the configuration file again. This improves performance by avoiding redundant computations and ensures that the application uses a consistent set of configuration values throughout its lifecycle.
